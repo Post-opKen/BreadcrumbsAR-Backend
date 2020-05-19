@@ -9,5 +9,6 @@ import javax.persistence.Entity;
 public class Anchor
 {
     private String anchorId;
-    private Coordinates coord;
+    private double lattitude;
+    private double longitude;
 }
