@@ -1,12 +1,18 @@
 package com.breadcrumbsar.breadcrumbsbackend.controllers;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MessagesController
 {
-    public String messageByID(String id)
+    public String saveMessage()
     {
-        return "This is a message!";
+        return "";
+    }
+
+    public String getMessageByAnchor()
+    {
+        return "";
     }
 }

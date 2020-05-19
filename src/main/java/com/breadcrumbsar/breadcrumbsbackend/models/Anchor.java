@@ -1,14 +1,22 @@
 package com.breadcrumbsar.breadcrumbsbackend.models;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Anchor
 {
+    @Id
+    @NonNull
     private String anchorId;
+    @NonNull
     private double lattitude;
+    @NonNull
     private double longitude;
 }
