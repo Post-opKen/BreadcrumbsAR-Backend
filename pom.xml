@@ -58,6 +58,12 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.12</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.squareup.moshi/moshi -->
+        <dependency>
+            <groupId>com.squareup.moshi</groupId>
+            <artifactId>moshi</artifactId>
+            <version>1.9.2</version>
+        </dependency>
 
     </dependencies>
 
