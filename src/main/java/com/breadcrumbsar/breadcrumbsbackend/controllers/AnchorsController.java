@@ -5,10 +5,7 @@ import com.breadcrumbsar.breadcrumbsbackend.services.AnchorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @ResponseBody
@@ -18,7 +15,7 @@ public class AnchorsController
     private AnchorService anchorService;
 
     @ResponseStatus(code= HttpStatus.OK)
-    @GetMapping("saveAnchor")
+    @PostMapping("saveAnchor")
     public void saveAnchor(@RequestParam(name = "id") String anchorId,
                              @RequestParam(name = "lat") double lattitude,
                              @RequestParam(name = "long") double longitude)

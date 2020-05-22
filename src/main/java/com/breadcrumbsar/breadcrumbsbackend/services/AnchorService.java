@@ -7,15 +7,13 @@ import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class AnchorService
 {
-    private final double MAP_RANGE = 0.001;
-    private final double AR_RANGE =  0.00001;
+    private final double GEOFENCE = 0.001;
+
     IAnchorRepository iAnchorRepository;
 
     public AnchorService(IAnchorRepository iAnchorRepository)
@@ -34,10 +32,10 @@ public class AnchorService
 
     public String getMapAnchors(double lattitude, double longitude)
     {
-        double minLat = lattitude - MAP_RANGE;
-        double maxLat = lattitude + MAP_RANGE;
-        double minLong = longitude - MAP_RANGE;
-        double maxLong = longitude + MAP_RANGE;
+        double minLat = lattitude - GEOFENCE;
+        double maxLat = lattitude + GEOFENCE;
+        double minLong = longitude - GEOFENCE;
+        double maxLong = longitude + GEOFENCE;
         List<Anchor> anchors = iAnchorRepository.findAnchorsByLattitudeBetweenAndLongitudeBetween(minLat, maxLat, minLong, maxLong);
         AnchorResponse response = new AnchorResponse(anchors);
 
@@ -46,10 +44,5 @@ public class AnchorService
 
         String json = jsonAdapter.toJson(response);
         return json;
-    }
-
-    public String getNearestAnchor()
-    {
-        return "";
     }
 }
