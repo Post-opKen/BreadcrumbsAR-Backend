@@ -15,7 +15,7 @@ public class AnchorsController
     private AnchorService anchorService;
 
     @ResponseStatus(code= HttpStatus.OK)
-    @PostMapping("saveAnchor")
+    @PutMapping("saveAnchor")
     public void saveAnchor(@RequestParam(name = "id") String anchorId,
                              @RequestParam(name = "lat") double lattitude,
                              @RequestParam(name = "long") double longitude)
