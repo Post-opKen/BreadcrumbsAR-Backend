@@ -1,6 +1,7 @@
 package com.breadcrumbsar.breadcrumbsbackend.controllers;
 
 import com.breadcrumbsar.breadcrumbsbackend.models.Anchor;
+import com.breadcrumbsar.breadcrumbsbackend.models.SaveAnchorResponse;
 import com.breadcrumbsar.breadcrumbsbackend.services.AnchorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +17,9 @@ public class AnchorsController
 
     @ResponseStatus(code= HttpStatus.OK)
     @PutMapping("saveAnchor")
-    public void saveAnchor(@RequestParam(name = "id") String anchorId,
-                             @RequestParam(name = "lat") double lattitude,
-                             @RequestParam(name = "long") double longitude)
+    public void saveAnchor(@RequestBody SaveAnchorResponse response)
     {
-        Anchor anchor = new Anchor(anchorId, lattitude, longitude);
+        Anchor anchor = new Anchor(response.getId(), response.getLat(), response.getLon());
         anchorService.saveAnchor(anchor);
     }
 
