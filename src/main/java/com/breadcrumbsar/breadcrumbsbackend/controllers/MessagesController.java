@@ -1,6 +1,7 @@
 package com.breadcrumbsar.breadcrumbsbackend.controllers;
 
 import com.breadcrumbsar.breadcrumbsbackend.models.Message;
+import com.breadcrumbsar.breadcrumbsbackend.models.SaveMessageResponse;
 import com.breadcrumbsar.breadcrumbsbackend.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +14,10 @@ public class MessagesController
     private MessageService messageService;
 
     @ResponseStatus(code = HttpStatus.OK)
-    @PostMapping("saveMessage")
-    public void saveMessage(@RequestParam(name = "anchorId") String anchorId, @RequestParam(name = "message") String message)
+    @PutMapping("saveMessage")
+    public void saveMessage(@RequestBody SaveMessageResponse response)
     {
-        Message newMessage = new Message(0, message, anchorId);
+        Message newMessage = new Message(0, response.getMessage(), response.getAnchorId());
         messageService.saveMessage(newMessage);
     }
 

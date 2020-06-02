@@ -1,7 +1,5 @@
 package com.breadcrumbsar.breadcrumbsbackend.services;
 
-import com.breadcrumbsar.breadcrumbsbackend.models.Anchor;
-import com.breadcrumbsar.breadcrumbsbackend.models.AnchorResponse;
 import com.breadcrumbsar.breadcrumbsbackend.models.Message;
 import com.breadcrumbsar.breadcrumbsbackend.repositories.IMessageRepository;
 import com.squareup.moshi.JsonAdapter;
@@ -9,7 +7,6 @@ import com.squareup.moshi.Moshi;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
-import java.util.List;
 import java.util.Optional;
 
 @Service

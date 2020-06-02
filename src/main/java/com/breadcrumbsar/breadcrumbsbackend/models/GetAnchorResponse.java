@@ -2,11 +2,11 @@ package com.breadcrumbsar.breadcrumbsbackend.models;
 
 import java.util.List;
 
-public class AnchorResponse
+public class GetAnchorResponse
 {
     private List<Anchor> anchorList;
 
-    public AnchorResponse(List<Anchor> anchorList)
+    public GetAnchorResponse(List<Anchor> anchorList)
     {
         this.anchorList = anchorList;
     }

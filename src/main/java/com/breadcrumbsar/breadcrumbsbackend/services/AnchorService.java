@@ -1,7 +1,7 @@
 package com.breadcrumbsar.breadcrumbsbackend.services;
 
 import com.breadcrumbsar.breadcrumbsbackend.models.Anchor;
-import com.breadcrumbsar.breadcrumbsbackend.models.AnchorResponse;
+import com.breadcrumbsar.breadcrumbsbackend.models.GetAnchorResponse;
 import com.breadcrumbsar.breadcrumbsbackend.repositories.IAnchorRepository;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -37,10 +37,10 @@ public class AnchorService
         double minLong = longitude - GEOFENCE;
         double maxLong = longitude + GEOFENCE;
         List<Anchor> anchors = iAnchorRepository.findAnchorsByLattitudeBetweenAndLongitudeBetween(minLat, maxLat, minLong, maxLong);
-        AnchorResponse response = new AnchorResponse(anchors);
+        GetAnchorResponse response = new GetAnchorResponse(anchors);
 
         Moshi moshi = new Moshi.Builder().build();
-        JsonAdapter<AnchorResponse> jsonAdapter = moshi.adapter(AnchorResponse.class);
+        JsonAdapter<GetAnchorResponse> jsonAdapter = moshi.adapter(GetAnchorResponse.class);
 
         String json = jsonAdapter.toJson(response);
         return json;
