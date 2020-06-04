@@ -24,11 +24,20 @@ public class AnchorsController
     }
 
     @ResponseStatus(code= HttpStatus.OK)
-    @GetMapping("getAnchors")
-    public String getAnchorsByCoords(@RequestParam(name = "lat") double lattitude,
+    @GetMapping("getMapAnchors")
+    public String getMapAnchors(@RequestParam(name = "lat") double lattitude,
                                      @RequestParam(name = "long") double longitude)
     {
         String json = anchorService.getMapAnchors(lattitude, longitude);
+        return json;
+    }
+
+    @ResponseStatus(code= HttpStatus.OK)
+    @GetMapping("getARAnchors")
+    public String getARAnchors(@RequestParam(name = "lat") double lattitude,
+                                     @RequestParam(name = "long") double longitude)
+    {
+        String json = anchorService.getARAnchors(lattitude, longitude);
         return json;
     }
 }

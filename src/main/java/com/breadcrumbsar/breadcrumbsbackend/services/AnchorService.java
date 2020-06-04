@@ -12,7 +12,8 @@ import java.util.List;
 @Service
 public class AnchorService
 {
-    private final double GEOFENCE = 0.001;
+    private final double MAP_GEOFENCE = 0.005;
+    private final double AR_GEOFENCE = 0.0001;
 
     IAnchorRepository iAnchorRepository;
 
@@ -32,10 +33,26 @@ public class AnchorService
 
     public String getMapAnchors(double lattitude, double longitude)
     {
-        double minLat = lattitude - GEOFENCE;
-        double maxLat = lattitude + GEOFENCE;
-        double minLong = longitude - GEOFENCE;
-        double maxLong = longitude + GEOFENCE;
+        double minLat = lattitude - MAP_GEOFENCE;
+        double maxLat = lattitude + MAP_GEOFENCE;
+        double minLong = longitude - MAP_GEOFENCE;
+        double maxLong = longitude + MAP_GEOFENCE;
+        List<Anchor> anchors = iAnchorRepository.findAnchorsByLattitudeBetweenAndLongitudeBetween(minLat, maxLat, minLong, maxLong);
+        GetAnchorResponse response = new GetAnchorResponse(anchors);
+
+        Moshi moshi = new Moshi.Builder().build();
+        JsonAdapter<GetAnchorResponse> jsonAdapter = moshi.adapter(GetAnchorResponse.class);
+
+        String json = jsonAdapter.toJson(response);
+        return json;
+    }
+
+    public String getARAnchors(double lattitude, double longitude)
+    {
+        double minLat = lattitude - AR_GEOFENCE;
+        double maxLat = lattitude + AR_GEOFENCE;
+        double minLong = longitude - AR_GEOFENCE;
+        double maxLong = longitude + AR_GEOFENCE;
         List<Anchor> anchors = iAnchorRepository.findAnchorsByLattitudeBetweenAndLongitudeBetween(minLat, maxLat, minLong, maxLong);
         GetAnchorResponse response = new GetAnchorResponse(anchors);
 
