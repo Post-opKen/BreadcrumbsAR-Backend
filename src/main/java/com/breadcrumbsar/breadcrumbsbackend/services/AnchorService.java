@@ -13,7 +13,7 @@ import java.util.List;
 public class AnchorService
 {
     private final double MAP_GEOFENCE = 0.005;
-    private final double AR_GEOFENCE = 0.0001;
+    private final double AR_GEOFENCE = 0.0005;
 
     IAnchorRepository iAnchorRepository;
 
